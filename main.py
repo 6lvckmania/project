@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    name = request.args.get("name", "World")
-    return f'Timofeev Evgeniy TS-81'
+    name = request.args.get("name", "Timofeev Evgeniy TS-81")
+    return f'{name}'
 
 @app.route('/first')
 def helloo():
