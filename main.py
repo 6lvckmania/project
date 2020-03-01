@@ -12,20 +12,20 @@ def hello():
 @app.route('/first')
 def helloo():
     a = None
-    b = 124124
-    c = 'fafew'
-    return f'{a},{b},{c}'
+    b = 999999999999999999999999
+    c = 'dead inside'
+    return f'{a}, {b}, {c}'
 
 @app.route('/second', methods=['GET','POST'])
 def second():
     if  request.method == 'GET':
         return render_template('./second2.html')
     if request.method == 'POST':
-        list1 = request.form.get('text')
-        turn=[x for x in reversed(list1)]
-        s=''
-        print(list1)
-        return f'{list1[::-1]}{s.join(list(reversed(list1)))}{s.join(turn)}'
+        text = request.form.get('text')
+        rev1=text[::-1] #slice
+        rev2="".join(list(reversed(text))) #reversed
+        rev3="".join([x for x in reversed(text)]) #comprehension
+        return f'$lice: {rev1}</br>rever$ed: {rev2}</br>comprehen$ion: {rev3}</br>'
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
