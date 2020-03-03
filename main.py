@@ -1,8 +1,10 @@
 #@timofeeevzh 
 
 from flask import Flask, escape, request, render_template
-import templates
+from classes import DeckOfCards
+
 app = Flask(__name__)
+deck = DeckOfCards()
 
 @app.route('/')
 def hello():
@@ -27,5 +29,22 @@ def second():
         rev3="".join([x for x in reversed(text)]) #comprehension
         return f'$lice: {rev1}</br>rever$ed: {rev2}</br>comprehen$ion: {rev3}</br>'
 
+@app.route('/third', methods=['GET','POST'])
+def third():
+    if  request.method == 'GET':
+        return render_template('./third.html',content='\u0020',  deck=str(deck))
+    else:
+        if "shuffle" in request.form:
+            deck.shuffle()
+            text = "Shuffled!"
+        elif "pop" in request.form:
+            text = deck.pop()
+        elif "get_random" in request.form:
+            text = deck.getrand()
+        else:
+            num = request.form.get("text")
+            text = deck.index(num)
+        return render_template('./third.html',content=text, deck=str(deck))
+    
 if __name__ == '__main__':
     app.run('0.0.0.0')

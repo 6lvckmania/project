@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+    <style>
+        .brd {
+         border: 4px double black; /* Параметры границы */
+         padding: 5px; /* Поля вокруг текста */
+        }
+       </style>
+</head>
+<body>
+    <div style="text-align:center;">
+        <form action="/third" method="post">  
+            <label>INDEX OF CARD, PLS:</label><br>
+            <input type="text" id="text" name="text">
+                <button type="submit">INDEX</button></br>
+                <br><button type="submit" id="shuffle" name="shuffle">SHUFFLE</button></br>
+                <br><button type="submit" id="pop" name="pop">POP</button></br>
+                <br><button type="submit" id="get_random" name="get_random">GET RANDOM</button></br>
+        </form>
+        <br>
+        <div class="brd">
+        <br><br>{{content}}
+        </div>
+    </div>   
+</body>
+</html>
