@@ -45,6 +45,17 @@ def third():
             num = request.form.get("text")
             text = deck.index(num)
         return render_template('./third.html',content=text, deck=str(deck))
-    
+
+@app.route('/fourth/1', methods = ['GET','POST'])
+def fourth1():
+    if request.method == 'GET':
+            return render_template('./fourth.html')
+    if request.method == 'POST':
+        text1 = request.form.get('text1')
+        text2 = request.form.get('text2')
+        x = range(int(text1),int(text2))
+        x1= list(filter(lambda x: x%3==0,x))
+        return f'{x1}'
+        
 if __name__ == '__main__':
     app.run('0.0.0.0')
